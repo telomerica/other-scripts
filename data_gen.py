@@ -5,7 +5,7 @@ from perlin_noise import PerlinNoise
 def sigmoid(ls):
     return 1 / (1+np.exp(-ls))
 
-def bias(ls,bias):
+def bias_(ls,bias):
     return ls+bias
 
 def data_generator(grid,pattern,options):
@@ -30,6 +30,6 @@ def data_generator(grid,pattern,options):
         ls = sigmoid(ls)
     
     elif options[0]=="bias":
-        ls = bias(ls,options[1])
+        ls = bias_(ls,options[1])
         
     return ls
