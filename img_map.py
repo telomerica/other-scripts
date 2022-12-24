@@ -17,7 +17,6 @@ def draw_map(map_array,color_dict=None):
             img.putpixel((x,y),(color))
             
     nym = ""
-    for x in range(11):
+    for x in range(5):
         nym = nym+str(random.randint(0,10))
     img.save(f"maps/{nym}.png")
-    img.show()
