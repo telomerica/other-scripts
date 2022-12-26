@@ -27,15 +27,15 @@ def save_map(map_array):
 
     all_arrays = [map_array,zeroeth,oneth,z_one,o_zero]
     extend_list = ["f0","f1","f2","f3","f4"]
-        
-    ltr_list = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    nmr_list = "1234567890"
-    ltr1,ltr2,ltr3 = random.sample(ltr_list,3)
-    nmr1,nmr2,nmr3 = random.sample(nmr_list,3)
+            
+    already_saved = (os.listdir("saved_arrays"))
+    already_saved.sort()
+    last = already_saved[-1]
+    last_number, extension = last.split("-")
 
     for i in range(len(all_arrays)):
         extend = extend_list[i]
-        generated_name = f"{extend}_{ltr1}{ltr2}{ltr3}{nmr1}{nmr2}{nmr3}"
+        generated_name = f"{int(last_number)+1}-{extend}"
         img = draw_map(all_arrays[i])        
         img.save(f"saved_images/{generated_name}.png")
         
