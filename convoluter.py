@@ -17,7 +17,7 @@ def convolute(array,kernel,stride):
             ls1.append(tile_value)
         ls.append(ls1)
     ls=np.array(ls)
-    return array, ls
+    return ls
 
 #array,ls=convolute(a,3,1)
 #img=draw_map(array,color_dict=False,float=True)
