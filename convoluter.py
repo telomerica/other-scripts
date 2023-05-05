@@ -4,9 +4,7 @@ def convert_img(directory):
     array = np.dot(img[..., :3], [0.2989, 0.5870, 0.1140])
     return array
 
-
-
-def convolute(array, kernel, stride):
+def convolute(array, kernel, stride,directory_save=False):
     rows, columns = array.shape
     out_rows = (rows - kernel) // stride + 1
     out_columns = (columns - kernel) // stride + 1
@@ -15,14 +13,18 @@ def convolute(array, kernel, stride):
     strided_array = as_strided(array, shape=(out_rows, out_columns, kernel, kernel), strides=strides)
 
     ls = np.average(strided_array, axis=(2, 3))
+    
+    if directory_save:
+        mpimg.imsave(directory_save, ls, cmap='gray')
 
     return ls
+
 
 #kernel_size = 20
 #stride = 1
 
 #array = convert_img("imgae.png")
-#result = convolute(kernel=kernel_size, stride=stride, array=array)
+#result = convolute(kernel=kernel_size, stride=stride, array=array,directory_save="image_r.png")
 
 #plt.imshow(result, cmap='gray')
 #plt.show()
