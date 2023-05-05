@@ -1,11 +1,11 @@
-import numpy as np
-from img_map import *
+def convert_img(directory):
+    img = mpimg.imread(directory)
+    img = np.array(img)
+    array = np.dot(img[..., :3], [0.2989, 0.5870, 0.1140])
 
-#a=np.random.rand(250,250)
-#print(a)
-#a[0:20,0:20]=1
+    return array
 
-def convolute(array,kernel,stride):
+def convolute(array,kernel,stride,return_image=False):
     rows = array.shape[0]
     columns = array.shape[1]
 
@@ -17,12 +17,15 @@ def convolute(array,kernel,stride):
             ls1.append(tile_value)
         ls.append(ls1)
     ls=np.array(ls)
+    #if return_pillow_image:
     return ls
 
-#array,ls=convolute(a,3,1)
-#img=draw_map(array,color_dict=False,float=True)
-#img.show()
 
+#kernel_size = 20
+#stride = 1
 
-#img1=draw_map(ls,color_dict=False,float=True)
-#img1.show()
+#array = convert_img("image.png")
+#result = convolute(kernel=kernel_size, stride=stride, array=array, return_image=True)
+
+#plt.imshow(result, cmap='gray')
+#plt.show()
